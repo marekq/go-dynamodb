@@ -1,0 +1,17 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: go-ddb
+
+Resources:
+  GoLambda:
+    Type: AWS::Serverless::Function 
+    Properties:
+      MemorySize: 512
+      Timeout: 30
+      CodeUri: lambda/
+      Handler: handler
+      Runtime: go1.x
+      Tracing: Active 
+      Environment: 
+        Variables:
+          ddb_table: "geocode"
